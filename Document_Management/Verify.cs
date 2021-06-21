@@ -105,7 +105,7 @@ namespace Document_Management
                 {
                     if (database.Execute("UPDATE tbl_Document SET Da_Phe_Duyet = '" + true + "' WHERE So_Cong_Van = N'" + txbNumber.Text + "'"))
                     {
-                        MessageBox.Show("Sửa công văn thành công.");
+                        MessageBox.Show("Thay đổi trạng thái công văn thành công.");
                         LoadData();
                         ClearData();
                     }
@@ -114,7 +114,7 @@ namespace Document_Management
                 {
                     if (database.Execute("UPDATE tbl_Document SET Da_Phe_Duyet = '" + false + "' WHERE So_Cong_Van = N'" + txbNumber.Text + "'"))
                     {
-                        MessageBox.Show("Sửa công văn thành công.");
+                        MessageBox.Show("Thay đổi trạng thái công văn thành công.");
                         LoadData();
                         ClearData();
                     }

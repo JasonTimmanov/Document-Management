@@ -45,7 +45,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(335, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Hệ thông quản lý công văn";
+            this.label1.Text = "Hệ thống quản lý công văn";
             // 
             // btnDocMng
             // 
@@ -122,7 +122,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Welcome";
-            this.Text = "Hệ thống quản lý công văn";
+            this.Text = "Chào mừng";
             this.ResumeLayout(false);
             this.PerformLayout();
 

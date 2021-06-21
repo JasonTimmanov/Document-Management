@@ -78,18 +78,24 @@ namespace Document_Management
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (txbNumber.Text == "")
-                MessageBox.Show("Số công văn này không tồn tại.");
+            if (dataGridView1.Rows.Count == 0)
+                MessageBox.Show("Không có công văn nào trong dữ liệu");
+            else if (txbNumber.Text == "")
+                MessageBox.Show("Vui lòng nhập số công văn của công văn cần xóa.");
             else
             {
                 DialogResult dialog = MessageBox.Show("Bạn có chắc muốn xóa công văn có số công văn là " + txbNumber.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
+                {
                     if (database.Execute("DELETE tbl_Document WHERE So_Cong_Van = '" + txbNumber.Text + "'"))
                     {
                         MessageBox.Show("Xóa công văn thành công.");
                         LoadData();
                         ClearData();
+                        return;
                     }
+                }
+                else return;
             }
         }
 
@@ -103,12 +109,18 @@ namespace Document_Management
                     MessageBox.Show("Vui lòng nhập đầy đủ các thông tin.");
                 else
                 {
-                    if (database.Execute("UPDATE tbl_Document SET Loai_Cong_Van = N'" + txbType.Text + "',Ten_Cong_Van = N'" + rtbDocName.Text + "',Ngay_Cong_Van = '" + dtpDocDate.Value.Date + "',Ngay_Den = '" + dtpArrivalDate.Value.Date + "',Noi_Den = N'" + txbPlace.Text + "',Nguoi_Ky_Nhan = N'" + txbSign.Text + "' WHERE So_Cong_Van = '" + txbNumber.Text + "'"))
+                    DialogResult dialog = MessageBox.Show("Bạn có chắc muốn sửa công văn có số công văn là " + txbNumber.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
+                    if (dialog == DialogResult.Yes)
                     {
-                        MessageBox.Show("Sửa công văn thành công.");
-                        LoadData();
-                        ClearData();
+                        if (database.Execute("UPDATE tbl_Document SET Loai_Cong_Van = N'" + txbType.Text + "',Ten_Cong_Van = N'" + rtbDocName.Text + "',Ngay_Cong_Van = '" + dtpDocDate.Value.Date + "',Ngay_Den = '" + dtpArrivalDate.Value.Date + "',Noi_Den = N'" + txbPlace.Text + "',Nguoi_Ky_Nhan = N'" + txbSign.Text + "' WHERE So_Cong_Van = '" + txbNumber.Text + "'"))
+                        {
+                            MessageBox.Show("Sửa công văn thành công.");
+                            LoadData();
+                            ClearData();
+                            return;
+                        }
                     }
+                    else return;
                 }
             }
         }

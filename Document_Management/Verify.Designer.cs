@@ -122,9 +122,9 @@
             // 
             this.btnVerify.Location = new System.Drawing.Point(12, 119);
             this.btnVerify.Name = "btnVerify";
-            this.btnVerify.Size = new System.Drawing.Size(74, 37);
+            this.btnVerify.Size = new System.Drawing.Size(193, 37);
             this.btnVerify.TabIndex = 29;
-            this.btnVerify.Text = "Phê duyệt";
+            this.btnVerify.Text = "Thay đổi trạng thái của công văn";
             this.btnVerify.UseVisualStyleBackColor = true;
             this.btnVerify.Click += new System.EventHandler(this.btnVerify_Click);
             // 
@@ -185,7 +185,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Verify";
-            this.Text = "Verify";
+            this.Text = "Phê duyệt công văn";
             this.Load += new System.EventHandler(this.Verify_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

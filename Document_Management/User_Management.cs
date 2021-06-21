@@ -79,6 +79,8 @@ namespace Document_Management
                                 Clearform();
                                 return;
                             }
+                            else
+                                return;
                         }
                         else
                         {
@@ -92,34 +94,56 @@ namespace Document_Management
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (ID != 1)
+            if (ID == 1)
             {
-                DialogResult dialog = MessageBox.Show("Bạn có chắc muốn xóa người dùng có ID "+txbID.Text+"?", "Xác nhận", MessageBoxButtons.YesNo);
-                if (dialog == DialogResult.Yes)
-                    if (database.Execute("DELETE tbl_user WHERE user_id = '" + txbID.Text + "'"))
-                    {
-                        MessageBox.Show("Xóa người dùng thành công.");
-                        Loaddata();
-                        Clearform();
-                    }
+                MessageBox.Show("Không thể xóa người dùng này.");
+                return;
             }
             else
-                MessageBox.Show("Không tồn tại người dùng có ID cần xóa, hoặc không thể xóa người dùng này.");
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (ID == Convert.ToInt32(Login.ID_USER))
+                    {
+                        MessageBox.Show("Không thể xóa chính bản thân người dùng, vui lòng chọn ID của người dùng khác cần xóa.");
+                        return;
+                    }
+                    else
+                    {
+                        DialogResult dialog = MessageBox.Show("Bạn có chắc muốn xóa người dùng có ID " + txbID.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
+                        if (dialog == DialogResult.Yes)
+                        {
+                            if (database.Execute("DELETE tbl_user WHERE user_id = '" + txbID.Text + "'"))
+                            {
+                                MessageBox.Show("Xóa người dùng thành công.");
+                                Loaddata();
+                                Clearform();
+                                return;
+                            }
+                        }
+                        else return;
+                    }
+                }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (txbID.Text != "" && txbName.Text != "" && txbPassword.Text != "" && cbbPerm.Text != "")
             {
-                if (database.Execute("UPDATE tbl_user SET user_name = '" + txbName.Text + "', user_password = '" + txbPassword.Text + "', user_perm = N'" + cbbPerm.Text + "' WHERE user_id = '" + txbID.Text + "'"))
+                DialogResult dialog = MessageBox.Show("Bạn có chắc muốn sửa thông tin của người dùng có ID " + txbID.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
                 {
-                    MessageBox.Show("Sửa người dùng thành công.");
-                    Loaddata();
-                    Clearform();
+                    if (database.Execute("UPDATE tbl_user SET user_name = '" + txbName.Text + "', user_password = '" + txbPassword.Text + "', user_perm = N'" + cbbPerm.Text + "' WHERE user_id = '" + txbID.Text + "'"))
+                    {
+                        MessageBox.Show("Sửa người dùng thành công.");
+                        Loaddata();
+                        Clearform();
+                        return;
+                    }
                 }
+                else return;
             }
             else
-                MessageBox.Show("Không tồn tại người dùng cần sửa.");
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin cần sửa.");
         }
 
         private void User_Management_Load(object sender, EventArgs e)

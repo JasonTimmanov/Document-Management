@@ -42,7 +42,7 @@ namespace Document_Management
                     MessageBox.Show("Mật khẩu nhập lại không trùng khớp.");
             }
             else
-                MessageBox.Show("Sai mật khẩu, vui lòng thử lại.");
+                MessageBox.Show("Mật khẩu cũ không chính xác.");
         }
 
         private void btnReturn_Click(object sender, EventArgs e)

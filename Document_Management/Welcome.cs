@@ -23,11 +23,11 @@ namespace Document_Management
         private void btnUserMng_Click(object sender, EventArgs e)
         {
             string Perm = "";
-            DataTable dt = database.Read("SELECT * FROM tbl_user WHERE user_ID ='" + Login.ID_USER + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_User WHERE User_ID ='" + Login.ID_USER + "'");
             if (dt != null)
             {
                 foreach (DataRow dr in dt.Rows)
-                    Perm = dr["user_perm"].ToString();
+                    Perm = dr["User_Perm"].ToString();
             }
             if (Perm.ToString().Equals("Admin"))
             {
@@ -74,11 +74,11 @@ namespace Document_Management
         private void btnVerify_Click(object sender, EventArgs e)
         {
             string Perm = "";
-            DataTable dt = database.Read("SELECT * FROM tbl_user WHERE user_ID ='" + Login.ID_USER + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_User WHERE User_ID ='" + Login.ID_USER + "'");
             if (dt != null)
             {
                 foreach (DataRow dr in dt.Rows)
-                    Perm = dr["user_perm"].ToString();
+                    Perm = dr["User_Perm"].ToString();
             }
             if (Perm.ToString().Equals("Nhân viên"))
                 MessageBox.Show("Chỉ có admin hoặc trưởng phòng mới có quyền truy cập vào đây.");

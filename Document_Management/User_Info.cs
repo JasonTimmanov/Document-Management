@@ -44,13 +44,13 @@ namespace Document_Management
         private void User_Info_Load(object sender, EventArgs e)
         {
             string Name = "", Perm = "";
-            DataTable dt = database.Read("SELECT * FROM tbl_user WHERE user_ID ='" + Login.ID_USER + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_User WHERE User_ID ='" + Login.ID_USER + "'");
             if (dt != null)
             {
                 foreach (DataRow dr in dt.Rows)
                 {
-                    Name = dr["user_name"].ToString();
-                    Perm = dr["user_perm"].ToString();
+                    Name = dr["User_Name"].ToString();
+                    Perm = dr["User_Perm"].ToString();
                 }
             }
             txbName.Text = Name;

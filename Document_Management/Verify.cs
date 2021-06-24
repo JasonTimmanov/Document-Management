@@ -56,7 +56,7 @@ namespace Document_Management
         {
             if (rdbShowUnchecked.Checked == true)
             {
-                DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Da_Phe_Duyet = '" + false + "'");
+                DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Legit_Status = '" + false + "'");
                 if (dt != null)
                     dataGridView1.DataSource = dt;
                 dataGridView1.ClearSelection();
@@ -68,7 +68,7 @@ namespace Document_Management
         {
             if (rdbShowChecked.Checked == true)
             {
-                DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Da_Phe_Duyet = '" + true + "'");
+                DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Legit_Status = '" + true + "'");
                 if (dt != null)
                     dataGridView1.DataSource = dt;
                 dataGridView1.ClearSelection();
@@ -103,7 +103,7 @@ namespace Document_Management
             {
                 if (!cbLegit.Checked)
                 {
-                    if (database.Execute("UPDATE tbl_Document SET Da_Phe_Duyet = '" + true + "' WHERE So_Cong_Van = N'" + txbNumber.Text + "'"))
+                    if (database.Execute("UPDATE tbl_Document SET Legit_Status = '" + true + "' WHERE Doc_Number = N'" + txbNumber.Text + "'"))
                     {
                         MessageBox.Show("Thay đổi trạng thái công văn thành công.");
                         LoadData();
@@ -112,7 +112,7 @@ namespace Document_Management
                 }
                 else
                 {
-                    if (database.Execute("UPDATE tbl_Document SET Da_Phe_Duyet = '" + false + "' WHERE So_Cong_Van = N'" + txbNumber.Text + "'"))
+                    if (database.Execute("UPDATE tbl_Document SET Legit_Status = '" + false + "' WHERE Doc_Number = N'" + txbNumber.Text + "'"))
                     {
                         MessageBox.Show("Thay đổi trạng thái công văn thành công.");
                         LoadData();

@@ -85,7 +85,7 @@ namespace Document_Management
 
         private void txbNumber_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE So_Cong_Van LIKE N'" + txbNumber.Text + "%'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Doc_Number LIKE N'" + txbNumber.Text + "%'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -93,7 +93,7 @@ namespace Document_Management
 
         private void txbType_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Loai_Cong_Van LIKE N'" + txbType.Text + "%'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Doc_Type LIKE N'" + txbType.Text + "%'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -101,7 +101,7 @@ namespace Document_Management
 
         private void rtbDocName_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Ten_Cong_Van LIKE N'" + rtbDocName.Text + "%'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Doc_Name LIKE N'" + rtbDocName.Text + "%'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -109,7 +109,7 @@ namespace Document_Management
 
         private void dtpDocDate_ValueChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Ngay_Cong_Van = '" + dtpDocDate.Value.Date + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Doc_Date = '" + dtpDocDate.Value.Date + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -117,7 +117,7 @@ namespace Document_Management
 
         private void dtpArrivalDate_ValueChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Ngay_Den = '" + dtpArrivalDate.Value.Date + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Arrival_Date = '" + dtpArrivalDate.Value.Date + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -125,7 +125,7 @@ namespace Document_Management
 
         private void txbPlace_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Noi_Den LIKE N'" + txbPlace.Text + "%'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Arrival_Place LIKE N'" + txbPlace.Text + "%'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -133,7 +133,7 @@ namespace Document_Management
 
         private void txbSign_TextChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Nguoi_Ky_Nhan LIKE N'" + txbSign.Text + "%'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Sign_Name LIKE N'" + txbSign.Text + "%'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -141,7 +141,7 @@ namespace Document_Management
 
         private void cbLegit_CheckedChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Da_Phe_Duyet = '" + cbLegit.Checked + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Legit_Status = '" + cbLegit.Checked + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -149,7 +149,7 @@ namespace Document_Management
 
         private void cbbDocMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Month(Ngay_Cong_Van) = '" + cbbDocMonth.Text + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Month(Doc_Date) = '" + cbbDocMonth.Text + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -157,7 +157,7 @@ namespace Document_Management
 
         private void nudDocYear_ValueChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Year(Ngay_Cong_Van) = '" + nudDocYear.Value + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Year(Doc_Date) = '" + nudDocYear.Value + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -165,7 +165,7 @@ namespace Document_Management
 
         private void cbbArrivalMonth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Month(Ngay_Den) = '" + cbbArrivalMonth.Text + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Month(Arrival_Date) = '" + cbbArrivalMonth.Text + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -173,7 +173,7 @@ namespace Document_Management
 
         private void nudArrivalYear_ValueChanged(object sender, EventArgs e)
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Year(Ngay_Den) = '" + nudArrivalYear.Value + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_Document WHERE Year(Arrival_Date) = '" + nudArrivalYear.Value + "'");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);

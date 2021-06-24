@@ -22,17 +22,17 @@ namespace Document_Management
         private void btnChange_Click(object sender, EventArgs e)
         {
             string name = "";
-            DataTable dt = database.Read("SELECT * FROM tbl_user WHERE user_ID = '" + Login.ID_USER + "' AND user_password = '" + txbOld.Text + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_User WHERE User_ID = '" + Login.ID_USER + "' AND User_Password = '" + txbOld.Text + "'");
             if (dt != null)
             {
                 foreach (DataRow dr in dt.Rows)
-                    name = dr["user_name"].ToString();
+                    name = dr["User_Name"].ToString();
             }
             if (name != "")
             {
                 if (txbNew.Text.Equals(txbRetype.Text))
                 {
-                    database.Read("UPDATE tbl_user SET user_password ='" + txbNew.Text + "' WHERE user_id = '" + Login.ID_USER + "'");
+                    database.Read("UPDATE tbl_User SET User_Password ='" + txbNew.Text + "' WHERE User_ID = '" + Login.ID_USER + "'");
                     MessageBox.Show("Đổi mật khẩu thành công.");
                     User_Info userinfo = new User_Info();
                     userinfo.Show();

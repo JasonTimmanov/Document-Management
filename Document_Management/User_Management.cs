@@ -24,7 +24,7 @@ namespace Document_Management
 
         private void Loaddata()
         {
-            DataTable dt = database.Read("SELECT * FROM tbl_user");
+            DataTable dt = database.Read("SELECT * FROM tbl_User");
             if (dt != null)
                 dataGridView1.DataSource = dt;
             dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Ascending);
@@ -38,7 +38,7 @@ namespace Document_Management
 
         private void Adddata()
         {
-            if (database.Execute("INSERT INTO tbl_user VALUES ('" + txbID.Text + "','" + txbName.Text + "','" + txbPassword.Text + "',N'" + cbbPerm.Text + "')"))
+            if (database.Execute("INSERT INTO tbl_User VALUES ('" + txbID.Text + "','" + txbName.Text + "','" + txbPassword.Text + "',N'" + cbbPerm.Text + "')"))
             {
                 MessageBox.Show("Thêm người dùng thành công.");
                 Loaddata();
@@ -62,6 +62,7 @@ namespace Document_Management
             else
             {
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
                     if (Convert.ToInt32(txbID.Text.ToString()) == Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value.ToString()))
                     {
                         MessageBox.Show("Người dùng với ID này đã tồn tại.");
@@ -89,6 +90,7 @@ namespace Document_Management
                             return;
                         }
                     }
+                }
             }
         }
 
@@ -112,7 +114,7 @@ namespace Document_Management
                         DialogResult dialog = MessageBox.Show("Bạn có chắc muốn xóa người dùng có ID " + txbID.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
                         if (dialog == DialogResult.Yes)
                         {
-                            if (database.Execute("DELETE tbl_user WHERE user_id = '" + txbID.Text + "'"))
+                            if (database.Execute("DELETE tbl_User WHERE User_ID = '" + txbID.Text + "'"))
                             {
                                 MessageBox.Show("Xóa người dùng thành công.");
                                 Loaddata();
@@ -132,7 +134,7 @@ namespace Document_Management
                 DialogResult dialog = MessageBox.Show("Bạn có chắc muốn sửa thông tin của người dùng có ID " + txbID.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
                 {
-                    if (database.Execute("UPDATE tbl_user SET user_name = '" + txbName.Text + "', user_password = '" + txbPassword.Text + "', user_perm = N'" + cbbPerm.Text + "' WHERE user_id = '" + txbID.Text + "'"))
+                    if (database.Execute("UPDATE tbl_User SET User_Name = '" + txbName.Text + "', User_Password = '" + txbPassword.Text + "', user_Perm = N'" + cbbPerm.Text + "' WHERE User_ID = '" + txbID.Text + "'"))
                     {
                         MessageBox.Show("Sửa người dùng thành công.");
                         Loaddata();

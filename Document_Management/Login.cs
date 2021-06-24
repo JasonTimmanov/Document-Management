@@ -23,11 +23,11 @@ namespace Document_Management
         private string getID(string name, string password)
         {
             string id = "";
-            DataTable dt = database.Read("SELECT * FROM tbl_user WHERE user_name ='" + name + "' AND user_password = '" + password + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_User WHERE User_Name ='" + name + "' AND User_Password = '" + password + "'");
             if (dt != null)
             {
                 foreach (DataRow dr in dt.Rows)
-                    id = dr["user_id"].ToString();
+                    id = dr["User_ID"].ToString();
             }
             return id;
         }

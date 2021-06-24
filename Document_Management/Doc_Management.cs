@@ -87,7 +87,7 @@ namespace Document_Management
                 DialogResult dialog = MessageBox.Show("Bạn có chắc muốn xóa công văn có số công văn là " + txbNumber.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
                 {
-                    if (database.Execute("DELETE tbl_Document WHERE So_Cong_Van = '" + txbNumber.Text + "'"))
+                    if (database.Execute("DELETE tbl_Document WHERE Doc_Number = '" + txbNumber.Text + "'"))
                     {
                         MessageBox.Show("Xóa công văn thành công.");
                         LoadData();
@@ -112,7 +112,7 @@ namespace Document_Management
                     DialogResult dialog = MessageBox.Show("Bạn có chắc muốn sửa công văn có số công văn là " + txbNumber.Text + "?", "Xác nhận", MessageBoxButtons.YesNo);
                     if (dialog == DialogResult.Yes)
                     {
-                        if (database.Execute("UPDATE tbl_Document SET Loai_Cong_Van = N'" + txbType.Text + "',Ten_Cong_Van = N'" + rtbDocName.Text + "',Ngay_Cong_Van = '" + dtpDocDate.Value.Date + "',Ngay_Den = '" + dtpArrivalDate.Value.Date + "',Noi_Den = N'" + txbPlace.Text + "',Nguoi_Ky_Nhan = N'" + txbSign.Text + "' WHERE So_Cong_Van = '" + txbNumber.Text + "'"))
+                        if (database.Execute("UPDATE tbl_Document SET Doc_Type = N'" + txbType.Text + "',Doc_Name = N'" + rtbDocName.Text + "',Doc_Date = '" + dtpDocDate.Value.Date + "',Arrival_Date = '" + dtpArrivalDate.Value.Date + "',Arrival_Place = N'" + txbPlace.Text + "',Sign_Name = N'" + txbSign.Text + "' WHERE Doc_Number = '" + txbNumber.Text + "'"))
                         {
                             MessageBox.Show("Sửa công văn thành công.");
                             LoadData();
@@ -159,11 +159,11 @@ namespace Document_Management
         private void btnVerify_Click(object sender, EventArgs e)
         {
             string Perm = "";
-            DataTable dt = database.Read("SELECT * FROM tbl_user WHERE user_ID ='" + Login.ID_USER + "'");
+            DataTable dt = database.Read("SELECT * FROM tbl_User WHERE User_ID ='" + Login.ID_USER + "'");
             if (dt != null)
             {
                 foreach (DataRow dr in dt.Rows)
-                    Perm = dr["user_perm"].ToString();
+                    Perm = dr["User_Perm"].ToString();
             }
             if (Perm.ToString().Equals("Nhân viên"))
                 MessageBox.Show("Chỉ có admin hoặc trưởng phòng mới có quyền truy cập vào đây.");
